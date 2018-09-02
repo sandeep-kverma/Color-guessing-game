@@ -54,6 +54,7 @@ button {
     font-size: inherit;
     color: steelblue;
     transition: all 0.3s;
+    letter-spacing: 1px;
 }
 
 #message {
