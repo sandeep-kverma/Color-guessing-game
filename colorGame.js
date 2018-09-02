@@ -8,37 +8,46 @@ var numSquares = 3;
 var colors = [];
 var pickedColor;
 
-newColors();
+init();
 
-for(var i = 0; i < modeButtons.length; i++) {
-    modeButtons[i].addEventListener("click", function() {
-        for(var j = 0; j < modeButtons.length; j++) { 
-            modeButtons[j].classList.remove("selected");
-        }
-        this.classList.add("selected");
-        (this.textContent === "Easy") ? numSquares = 3 : numSquares = 6;
-        newColors();
-    })
+function init() {
+    setupSquares();
+    setupButtons();
+    newColors();
+}
+
+function setupButtons() {
+    for(var i = 0; i < modeButtons.length; i++) {
+        modeButtons[i].addEventListener("click", function() {
+            for(var j = 0; j < modeButtons.length; j++) { 
+                modeButtons[j].classList.remove("selected");
+            }
+            this.classList.add("selected");
+            (this.textContent === "Easy") ? numSquares = 3 : numSquares = 6;
+            newColors();
+        })
+    }
 }
 
 resetButton.addEventListener("click", function() {
     newColors();
 })
 
-for(var i = 0; i < colors.length; i++) {
-    squares[i].style.backgroundColor = colors[i];
-    squares[i].addEventListener("click", function() {
-        var clickedColor = this.style.backgroundColor;
-        if(clickedColor === pickedColor) {
-            message.textContent = "Correct color";
-            changeColor(clickedColor);
-            h1.style.background = clickedColor;
-            resetButton.textContent = "Play again?";
-        } else {
-            this.style.backgroundColor = "#232323";
-            message.textContent = "Try again";
-        }
-    })
+function setupSquares() {
+    for(var i = 0; i < squares.length; i++) {
+        squares[i].addEventListener("click", function() {
+            var clickedColor = this.style.backgroundColor;
+            if(clickedColor === pickedColor) {
+                message.textContent = "Correct!";
+                changeColor(clickedColor);
+                h1.style.background = clickedColor;
+                resetButton.textContent = "Play again?";
+            } else {
+                this.style.backgroundColor = "#232323";
+                message.textContent = "Try again";
+            }
+        })
+    }
 }
 
 function changeColor(color) {
