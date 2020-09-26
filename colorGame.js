@@ -1,11 +1,11 @@
-var squares = document.getElementsByClassName("square");
-var color_picked = document.getElementById("color_code");
-var message = document.querySelector("#message");
-var h1 = document.querySelector("h1");
-var resetButton = document.querySelector("#reset");
-var modeButtons = document.querySelectorAll(".modes");
-var numSquares = 3;
-var colors = [];
+var squares         = document.getElementsByClassName("square");
+var color_picked    = document.getElementById("color_code");
+var message         = document.querySelector("#message");
+var h1              = document.querySelector("h1");
+var resetButton     = document.querySelector("#reset");
+var modeButtons     = document.querySelectorAll(".modes");
+var numSquares      = 3;
+var colors          = [];
 var pickedColor;
 
 init();
